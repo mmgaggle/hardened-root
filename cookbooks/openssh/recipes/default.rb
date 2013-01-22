@@ -22,3 +22,8 @@ cookbook_file "/etc/ssh/sshd_config" do
   group "root"
   mode "644"
 end
+
+service "sshd" do
+  supports :restart => true
+  action [:enable, :start]
+end
