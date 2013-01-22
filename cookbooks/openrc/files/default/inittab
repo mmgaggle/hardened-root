@@ -1,3 +1,4 @@
+# Created by Chef
 #
 # /etc/inittab:  This file describes how the INIT process should set up
 #                the system in a certain run-level.
