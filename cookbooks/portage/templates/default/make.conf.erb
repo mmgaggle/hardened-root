@@ -1,0 +1,11 @@
+CHOST="x86_64-pc-linux-gnu"
+CFLAGS="-march=nocona -O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+USE="bindist mmx sse sse2 hardened perl python ruby vim-pager vim-syntax bash-completion berkdb threads ipv6 ssl lua"
+
+GENTOO_MIRRORS="http://gentoo.oregonstate.edu http://www.ibiblio.org/pub/Linux/distributions/gentoo http://adelie.polymtl.ca/"
+SYNC="rsync://rsync.gentoo.org/gentoo-portage"
+#PORTAGE_BINHOST="http://hardened.objects.dreamhost.com/binpkg/"
+PKGDIR="/root/workspace/packagedir"
+
+RUBY_TARGETS="ruby19"
