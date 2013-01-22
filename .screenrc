@@ -1,0 +1,31 @@
+# Bottom status string format
+hardstatus alwayslastline
+hardstatus string "%{.kG}%-w%{.kB}%n (%t)%{-}%+w %=%{..G}[%H %l]:%{..B} %m/%d %c "
+
+# Few Tweaks
+defbce on
+defutf8 on
+
+# Prevent s from locking screen
+bind s
+
+# Open some initial scs
+screen -t 'sc' 0
+screen -t 'sc' 0
+screen -t 'sc' 0
+screen -t 'sc' 0
+screen -t 'sc' 0
+
+# Add some bindings to allow for up to 20 scs
+bind ! select 11
+bind @ select 12
+bind '#' select 13
+bind $ select 14
+bind % select 15
+bind '^' select 16
+bind & select 17
+bind * select 18
+bind ( select 19
+bind ) select 10
+
+defscrollback 5000
