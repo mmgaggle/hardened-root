@@ -24,6 +24,7 @@ net-dns/djbdns
 net-firewall/ebtables
 net-firewall/iptables
 net-misc/ntp
+net-misc/s3cmd
 net-misc/whois
 sys-apps/dmidecode
 sys-apps/ethtool
