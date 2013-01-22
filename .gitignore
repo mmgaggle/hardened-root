@@ -2,6 +2,7 @@
 .gitconfig
 .gnupg/pubring.gpg
 .viminfo
+.lesshst
 .s3cfg
 objects
-
+.ssh
