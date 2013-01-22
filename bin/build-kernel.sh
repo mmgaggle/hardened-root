@@ -1,19 +1,27 @@
 #/bin/bash
 
-linux_src=/usr/src/linux-stable
+function shellout {
+  echo -=- command failed, shelling out!
+  exit 1
+}
 
-export $(head -n3 Makefile | sed 's/ //g' )
-kernel_name="${VERSION}.${PATCHLEVEL}.${SUBLEVEL}${CONFIG_LOCALVERSION}-$(date +%y%m%d%H%M)"
+function build_kernel{
+  linux_src="/usr/src/linux-stable"
 
-jobs=$(expr $(grep name /proc/cpuinfo|wc -l) * 2)
+  export $(head -n3 ${linux_src}/Makefile | sed 's/ //g' || shellout())
+  kernel_name="${VERSION}.${PATCHLEVEL}.${SUBLEVEL}${CONFIG_LOCALVERSION}-$(date +%y%m%d%H%M)"
+  jobs=$(expr $(grep name /proc/cpuinfo|wc -l) * 2)
 
-echo -=- Building Kernel
-cd /usr/src/linux-stable
-make -j${jobs} bzImage
+  echo -=- Build Kernel
+  cd /usr/src/linux-stable || shellout()
+  make -j${jobs} bzImage || shellout()
 
-echo -=- Copying vmlinuz, vmlinux and config files
-cp /usr/src/linux-stable/arch/x86/boot/bzImage /home/kyle/workspace/kernel/vmlinuz-$kernel_name
-cp /usr/src/linux-stabe/arch/x86/boot/vmlinux.bin /home/kyle/workspace/kernel/vmlinux-$kernel_name
-cp /usr/src/linux-stabe/.config /home/kyle/workspace/kernel/config-$kernel_name
+  echo -=- Push Kernel Files
+  /usr/bin/s3put /usr/src/linux-stable/arch/x86/boot/bzImage s3://hardened/kernel/vmlinuz-$kernel_name || shellout()
+  /usr/bin/s3put /usr/src/linux-stable/arch/x86/boot/vmlinux.bin s3://hardened/kernel/vmlinux-$kernel_name || shellout()
+  /usr/bin/s3put /usr/src/linux-stable/.config s3://hardened/kernel/config-$kernel_name || shellout()
 
-echo -=- Done!
+  echo -=- Done!
+}
+
+build_kernel()
