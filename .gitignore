@@ -8,3 +8,4 @@
 workspace/kernels
 workspace/initrd
 workspace/stages
+workspace/packagedir
