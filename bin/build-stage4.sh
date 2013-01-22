@@ -45,7 +45,7 @@ function build_stage4 {
   echo -=- Finished Stage 4 build
 
   echo -=- Pushing stage 4 build to DreamObjects
-  /usr/bin/s3cmd -c ${HOME}/.s3cfg put ${stages_dir}/${stage_name}.tar.bz2 s3://${bucket}/stages/${stage_name} || shellout
+  /usr/bin/s3cmd -c ${HOME}/.s3cfg put ${stages_dir}/${stage_name}.tar.bz2 s3://${bucket}/stages/${stage_name}.tar.bz2 || shellout
 
   echo -=- Done!
 }

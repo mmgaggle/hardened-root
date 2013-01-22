@@ -9,6 +9,7 @@ function build_kernel {
   linux_src="/usr/src/linux-stable"
 
   export $(head -n3 ${linux_src}/Makefile | sed 's/ //g' || shellout)
+  export $(grep CONFIG_LOCALVERSION= /usr/src/linux/.config)
   kernel_name="${VERSION}.${PATCHLEVEL}.${SUBLEVEL}${CONFIG_LOCALVERSION}-$(date +%y%m%d%H%M)"
   jobs=$(expr $(grep name /proc/cpuinfo|wc -l) \* 2)
 
