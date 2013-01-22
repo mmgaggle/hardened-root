@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: daemontools
+# Cookbook Name:: djbdns
 # Recipe:: default
 #
 # Copyright 2013, Kyle Bader
@@ -17,13 +17,6 @@
 # limitations under the License.
 #
 
-directory "/service" do
-  owner "root"
-  group "root"
-  mode "0755"
+group "nofiles" do
   action :create
-end
-
-service "svscan" do
-  action [:enable, :start]
 end

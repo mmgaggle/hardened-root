@@ -19,16 +19,20 @@
 
 group "nosock" do
   gid "5002"
+  action :create
 end
 
 group "nocsock" do
   gid "5003"
+  action :create
 end
 
 group "nossock" do
   gid "5004"
+  action :create
 end
 
 group "tpe" do
   gid "5005"
+  action :create
 end
