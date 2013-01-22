@@ -16,4 +16,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#
+
+cookbook_file "/etc/portage/make.conf" do
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
+cookbook_file "/var/lib/portage/world" do
+  owner "root"
+  group "portage"
+  mode "0644"
+end
+
+# Keywords for Chef with ruby19
+cookbook_file "/etc/portage/package.accept_keywords" do
+  owner "root"
+  group "root"
+  mode "0644"
+end
