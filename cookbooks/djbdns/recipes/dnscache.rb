@@ -57,7 +57,7 @@ file "/service/dnscachex/env/DATALIMIT" do
 end
 
 file "/service/dnscachex/env/IP" do
-  contents node['dnscache']['ip_address']
+  contents "127.0.0.1"
   owner "root"
   group "root"
   mode "0644"
