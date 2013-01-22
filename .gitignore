@@ -2,4 +2,6 @@
 .gitconfig
 .gnupg/pubring.gpg
 .viminfo
+.s3cfg
 objects
+

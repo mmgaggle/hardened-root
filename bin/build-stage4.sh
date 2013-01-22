@@ -2,6 +2,7 @@
 
 stage_name="hardened-base-$(date +%y%m%d%H%M)"
 stages_dir=/root/objects/stages
+bucket='hardened'
 
 dir_excludes="/mnt/* \
               /dev \
@@ -25,12 +26,16 @@ excludes="$(for i in $dir_excludes; do if [ -d $i ]; then \
     echo -n " --exclude=$i/*"; fi; done) $(for i in $file_excludes; do \
     echo -n " --exclude=$i"; done)"
 
-tar_ptions="$excludes --create --absolute-names --bzip2 --verbose --totals --file"
+tar_options="$excludes --create --absolute-names --bzip2 --verbose --totals --file"
 
 echo -=- Starting stage 4 build
-echo -=- Target: $stages_dir/$stage_name
+echo -=- Target: ${stages_dir}/${stage_name}
 echo -=- Running:
 echo -=- tar ${tar_options} ${stages_dir}/${stage_name} /
-tar ${tar_options} ${stages_dir}/${stage_name} /;
+tar ${tar_options} ${stages_dir}/${stage_name}.tar.bz2 /;
 
-echo -=- Finished Stage 4 build!
+echo -=- Finished Stage 4 build
+
+echo -=- Pushing stage 4 build to DreamObjects
+s3put ${stages_dir}/${stage_name} s3://${bucket}/stages/${stage_name}
+
