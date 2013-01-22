@@ -4,5 +4,7 @@
 .viminfo
 .lesshst
 .s3cfg
-objects
 .ssh
+workspace/kernels
+workspace/initrd
+workspace/stages

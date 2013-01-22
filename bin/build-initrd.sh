@@ -17,6 +17,6 @@ initrd_path="$initrd_dir/initrd-$initrd_name-$(date +%y%m%d%H%M)"
 
 echo -=- Building initrd
 cd $initrd_dir/initrd-$initrd_name
-find . -print0 | cpio -ov -0 --format=newc | gzip -9 > /root/objects/initrd/$initrd_path
+find . -print0 | cpio -ov -0 --format=newc | gzip -9 > /root/workspace/initrd/$initrd_path
 
 echo -=- Done!
